@@ -7,8 +7,8 @@
 </head>
 
 <body>
-  <!-- Start with muted audio to allow autoplay -->
-  <audio id="bg-music" src="navyaBirthday.mp3" autoplay loop muted></audio>
+  <!-- Hidden Background Audio -->
+  <audio id="bg-music" src="navyaBirthday.mp3" autoplay loop></audio>
 
   <div class="card">
     <div class="back"></div>
@@ -20,25 +20,27 @@
     <div class="text-container">
       <p id="head">Happy Birthday!</p>
       <h5 id="yourName">To :- Navya </h5>
-      <p>Wishing you a day filled with smiles, love, and everything you enjoy. You’re truly special, and you deserve all the happiness in the world. ✨</p>
+      <p>
+        Wishing you a day filled with smiles, love, and everything you enjoy. You’re truly special, and you deserve all the happiness in the world. ✨
+      </p>
       <p>Keep shining and spreading your positive vibes!✨🎂</p>
     </div>
   </div>
 
   <script>
-    alert('Hello! Navya, Click "OK" to display the birthday card. Then, touch the card using your mouse pointer or click it with your hand.');
+    // Alert message
+    alert('Hello! Navya, Click "OK" to display the birthday card. Then, touch or hover on the card using your mouse pointer or click card with your hand.');
 
+    // Handle autoplay restrictions on some browsers
     window.addEventListener("load", () => {
       const audio = document.getElementById("bg-music");
-
-      // Unmute shortly after autoplay starts
-      setTimeout(() => {
-        audio.muted = false;
-        audio.volume = 0.5;
-        audio.play().catch(() => {
-          console.log("Autoplay still blocked");
-        });
-      }, 300); // 300 ms delay is usually enough
+      audio.volume = 0.5; // Optional volume control
+      audio.play().catch(() => {
+        // If autoplay is blocked, allow click to start
+        window.addEventListener("click", () => {
+          audio.play();
+        }, { once: true });
+      });
     });
   </script>
 </body>
