@@ -33,15 +33,13 @@
 
     // Handle autoplay restrictions on some browsers
     window.addEventListener("load", () => {
-      const audio = document.getElementById("bg-music");
+      
       audio.volume = 0.5; // Optional volume control
-      audio.play().catch(() => {
-        // If autoplay is blocked, allow click to start
-        window.addEventListener("click", () => {
-          audio.play();
-        }, { once: true });
-      });
-    });
+      audio.play()
+        
+
+    }
+      
   </script>
 </body>
 </html>
